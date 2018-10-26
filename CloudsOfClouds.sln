@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudsOfClouds", "CloudsOfClouds\CloudsOfClouds.csproj", "{AD4690C1-D3BE-4AC7-9B61-6E6DE3866529}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudOfClouds.Test", "CloudOfClouds.Test\CloudOfClouds.Test.csproj", "{4C44E8F5-1F25-4E09-9251-12889D559317}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD4690C1-D3BE-4AC7-9B61-6E6DE3866529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD4690C1-D3BE-4AC7-9B61-6E6DE3866529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD4690C1-D3BE-4AC7-9B61-6E6DE3866529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD4690C1-D3BE-4AC7-9B61-6E6DE3866529}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C44E8F5-1F25-4E09-9251-12889D559317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C44E8F5-1F25-4E09-9251-12889D559317}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C44E8F5-1F25-4E09-9251-12889D559317}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C44E8F5-1F25-4E09-9251-12889D559317}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A5047B1-CED9-4494-B7E6-6A7C37941CB5}
+	EndGlobalSection
+EndGlobal
