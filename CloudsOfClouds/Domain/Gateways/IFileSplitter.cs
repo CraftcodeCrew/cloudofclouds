@@ -7,6 +7,6 @@ namespace CloudsOfClouds.Domain.Gateways
 {
     public interface IFileSplitter
     {
-		Task<IEnumerable<BlobId>> SplitFile(int parts, string path);
+		Task<IEnumerable<BlobId>> SplitData(int parts, Stream stream);
     }
 }

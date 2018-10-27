@@ -15,14 +15,16 @@ namespace CloudsOfClouds.Interface
 			this._fileSplitter = fileSplitter;
 		}
 
-		public Task<FileStream> Download(CoCFileId fileId)
+		public Task<Stream> Download(CoCFileId fileId)
 		{
 			throw new NotImplementedException();
 		}
 
-		public Task<CoCFile> Upload(string path)
+		public async Task<CoCFile> Upload(Stream stream)
 		{
-			throw new NotImplementedException();
+			_fileSplitter.SplitData(2, stream);
+			await Task.Delay(20);
+			return null;
 		}
 	}
 }
