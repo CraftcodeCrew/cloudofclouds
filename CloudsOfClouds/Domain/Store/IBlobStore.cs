@@ -6,6 +6,6 @@ namespace CloudsOfClouds.Domain.Store
     public interface IBlobStore
     {
 		BlobId Put(Stream blob);
-		FileStream GetBlob(BlobId blobId);
+		Stream GetBlob(BlobId blobId);
     }
 }

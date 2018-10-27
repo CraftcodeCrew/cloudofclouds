@@ -8,13 +8,11 @@ namespace CloudsOfClouds.Domain.Model
         private readonly Guid _blobId;
 		private readonly CloudProvider _provider;
         
-		public BlobId(CloudProvider provider)
+		public BlobId()
         {
             this._blobId = Guid.NewGuid();
-			this._provider = provider;
         }
 
         public Guid GetBlobId => this._blobId;
-		public CloudProvider GetProvider => this._provider;
     }
 }

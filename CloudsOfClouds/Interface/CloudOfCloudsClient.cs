@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using CloudsOfClouds.Domain.Gateways;
+using CloudsOfClouds.Domain.Mapper;
 using CloudsOfClouds.Domain.Model;
 
 namespace CloudsOfClouds.Interface
@@ -9,11 +10,13 @@ namespace CloudsOfClouds.Interface
 	public class CloudOfCloudsClient : ICloudOfCloudsClient
     {
 		private readonly IFileSplitter _fileSplitter;
+	    private readonly IMapper _mapper;
 
-		public CloudOfCloudsClient(IFileSplitter fileSplitter)
+		public CloudOfCloudsClient(IFileSplitter fileSplitter, IMapper mapper)
         {
 			this._fileSplitter = fileSplitter;
-		}
+	        this._mapper = mapper;
+        }
 
 		public Task<Stream> Download(CoCFileId fileId)
 		{
@@ -22,7 +25,8 @@ namespace CloudsOfClouds.Interface
 
 		public async Task<CoCFile> Upload(Stream stream)
 		{
-			_fileSplitter.SplitData(2, stream);
+			var parts = await _fileSplitter.SplitData(2, stream);
+			var fileId = await _mapper.AddMap(parts);
 			await Task.Delay(20);
 			return null;
 		}

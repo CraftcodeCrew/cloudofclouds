@@ -17,23 +17,16 @@ namespace CloudOfClouds.Test
         [Fact]
         async Task TestNumberOfParts()
         {
-            var blobId = new BlobId(CloudProvider.GOOGLE);
+            var blobId = new BlobId();
             var numberParts = 2;
             var blobStoreMock = new Mock<IBlobStore>();
             blobStoreMock.Setup(store => store.Put(It.IsAny<Stream>())).Returns(blobId);
             var splitter = new FileSplitter(blobStoreMock.Object);
-            
-            // Arrange
-            var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData>
-            {
-                { @"c:\myfile.txt", new MockFileData("Testing is meh.") },
-                { @"c:\demo\jQuery.js", new MockFileData("some js") },
-                { @"c:\demo\image.gif", new MockFileData(new byte[] { 0x12, 0x34, 0x56, 0xd2 }) }
-            });
-
+            var fileSystem = TestUtilities.CreateFilesystem();
             var fileStream = fileSystem.FileStream.Create(@"c:\myfile.txt", FileMode.Open);
             
             var blobids = await splitter.SplitData(numberParts, fileStream);
+           
             Assert.Equal(numberParts, blobids.Count());
         }
     }
