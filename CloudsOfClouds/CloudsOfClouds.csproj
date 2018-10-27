@@ -4,4 +4,26 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Google.Apis.Drive.v3" Version="1.36.1.1390" />
+    <PackageReference Include="Dropbox.Api" Version="4.9.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domain\" />
+    <Folder Include="Services\" />
+    <Folder Include="Gateways \" />
+    <Folder Include="TopSecret\" />
+    <Folder Include="Domain\Gateways\" />
+    <Folder Include="Domain\Services\" />
+    <Folder Include="Domain\TopSecret\" />
+    <Folder Include="Mapper\" />
+    <Folder Include="Domain\Mapper\" />
+    <Folder Include="Interface\" />
+    <Folder Include="Domain\Model\" />
+    <Folder Include="Domain\Store\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Domain\Model\EmptyClass.cs" />
+    <Compile Remove="Domain\Services\EmptyEnumeration.cs" />
+  </ItemGroup>
 </Project>
