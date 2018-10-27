@@ -23,7 +23,7 @@ namespace CloudsOfClouds.Interface
 			throw new NotImplementedException();
 		}
 
-		public async Task<CoCFile> Upload(Stream stream)
+		public async Task<CoCFileId> Upload(Stream stream)
 		{
 			var parts = await _fileSplitter.SplitData(2, stream);
 			var fileId = await _mapper.AddMap(parts);
