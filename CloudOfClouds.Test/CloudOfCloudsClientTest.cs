@@ -36,7 +36,7 @@ namespace CloudOfClouds.Test
 	    {
 		    var fileSplitter = new Mock<IFileSplitter>();
 		    var mapper = new Mock<IMapper>();
-		    mapper.Setup(m => m.AddMap(It.IsAny<IEnumerable<BlobId>>())).ReturnsAsync(new CoCFileId());
+		    mapper.Setup(m => m.AddMap(It.IsAny<IEnumerable<BlobId>>())).Returns(new CoCFileId());
 		    var client = new CloudOfCloudsClient(fileSplitter.Object, mapper.Object);
 
 		    await client.Upload(null);
@@ -48,7 +48,7 @@ namespace CloudOfClouds.Test
 	    async Task VerifyMapperCall()
 	    {
 		    var mapper = new Mock<IMapper>();
-		    mapper.Setup(m => m.AddMap(new List<BlobId>())).ReturnsAsync(new CoCFileId());
+		    mapper.Setup(m => m.AddMap(new List<BlobId>())).Returns(new CoCFileId());
 		    
 		    
 	    }

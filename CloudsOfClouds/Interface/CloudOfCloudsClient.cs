@@ -26,7 +26,7 @@ namespace CloudsOfClouds.Interface
 		public async Task<CoCFileId> Upload(Stream stream)
 		{
 			var parts = await _fileSplitter.SplitData(2, stream);
-			var fileId = await _mapper.AddMap(parts);
+			var fileId = _mapper.AddMap(parts);
 			await Task.Delay(20);
 			return null;
 		}

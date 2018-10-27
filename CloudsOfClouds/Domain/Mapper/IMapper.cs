@@ -8,7 +8,7 @@ namespace CloudsOfClouds.Domain.Mapper
 {
     public interface IMapper
     {
-		Task<CoCFileId> AddMap(IEnumerable<BlobId> parts);
+		CoCFileId AddMap(IEnumerable<BlobId> parts);
 		Task<IEnumerable<BlobId>> GetMap(CoCFileId fileID);
     }
 }
