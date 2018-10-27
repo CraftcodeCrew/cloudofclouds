@@ -5,7 +5,7 @@ namespace CloudsOfClouds.Domain.Store
 {
     public interface IBlobStore
     {
-		IBlobStore Put(BlobId id, FileStream blob);
+		BlobId Put(Stream blob);
 		FileStream GetBlob(BlobId blobId);
     }
 }

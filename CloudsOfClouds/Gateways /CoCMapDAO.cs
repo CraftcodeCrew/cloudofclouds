@@ -1,5 +1,6 @@
 ﻿using System;
-namespace CloudsOfClouds.Domain.Model
+
+namespace CloudsOfClouds.Gateways_
 {
 	public class CoCMapDAO
 	{

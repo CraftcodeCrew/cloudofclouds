@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CloudsOfClouds.Interface
+namespace CloudsOfClouds.Domain.Model
 {
     public class CoCFile
     {

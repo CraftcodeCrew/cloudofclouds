@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CloudsOfClouds.Domain.Model;
+using CloudsOfClouds.Gateways_;
 
 namespace CloudsOfClouds.Mapper
 {

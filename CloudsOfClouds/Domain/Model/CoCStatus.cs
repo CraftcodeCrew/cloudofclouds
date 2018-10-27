@@ -1,5 +1,4 @@
-﻿using System;
-namespace CloudsOfClouds.Interface
+﻿namespace CloudsOfClouds.Domain.Model
 {
 	public enum CoCStatus
 	{
