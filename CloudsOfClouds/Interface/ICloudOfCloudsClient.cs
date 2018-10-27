@@ -6,7 +6,7 @@ namespace CloudsOfClouds.Interface
 {
     public interface ICloudOfCloudsClient
     {
-		Task<CoCFile> Upload(Path path);
+		Task<CoCFile> Upload(string path);
 		Task<FileStream> Download(CoCFileId fileId);
     }
 }

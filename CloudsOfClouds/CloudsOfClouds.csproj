@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Google.Apis.Drive.v3" Version="1.36.1.1390" />
     <PackageReference Include="Dropbox.Api" Version="4.9.0" />
+    <PackageReference Include="Autofac" Version="4.8.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
