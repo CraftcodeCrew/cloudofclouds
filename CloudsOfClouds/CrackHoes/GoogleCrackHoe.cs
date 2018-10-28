@@ -1,13 +1,14 @@
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-
+using CloudsOfClouds.Domain.Model;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v2;
-using Google.Apis.Drive.v2.Data;
 using Google.Apis.Services;
 using Google.Apis.Upload;
+using File = Google.Apis.Drive.v2.Data.File;
 
 namespace CloudsOfClouds.CrackHoes
 {
@@ -17,8 +18,10 @@ namespace CloudsOfClouds.CrackHoes
         private static string UploadFileName = "penis";
         private const string ContentType = @"application/octet-stream";
         
-        public async Task Magic()
+        public async Task Magic(Stream domibitch, BlobId id)
         {
+            UploadFileName = id.GetBlobId.ToString();
+                        
 //            GoogleWebAuthorizationBroker.Folder = "Library";
             UserCredential credential;
             using (var stream = new System.IO.FileStream("../CloudsOfClouds/TopSecret/google_credentials.json",
@@ -35,23 +38,16 @@ namespace CloudsOfClouds.CrackHoes
                 ApplicationName = "Drive API Sample",
             });
 
-            var progress = await UploadFileAsync(service);
+            var progress = await UploadFileAsync(service, domibitch);
 Debug.Write(progress);
             
         }
 
-        private Task<IUploadProgress> UploadFileAsync(DriveService service)
+        private Task<IUploadProgress> UploadFileAsync(DriveService service, Stream domibitch)
         {
             var title = UploadFileName;
-            if (title.LastIndexOf('\\') != -1)
-            {
-                title = title.Substring(title.LastIndexOf('\\') + 1);
-            }
 
-            var uploadStream = new System.IO.FileStream(UploadFileName, System.IO.FileMode.Open,
-                System.IO.FileAccess.Read);
-
-            var insert = service.Files.Insert(new File { Title = title }, uploadStream, ContentType);
+            var insert = service.Files.Insert(new File { Title = title }, domibitch, ContentType);
 
             insert.ChunkSize = FilesResource.InsertMediaUpload.MinimumChunkSize * 2;
 
@@ -64,7 +60,7 @@ Debug.Write(progress);
             }, TaskContinuationOptions.NotOnRanToCompletion);
             task.ContinueWith(t =>
             {
-                uploadStream.Dispose();
+                domibitch.Dispose();
             });
 
             return task;
