@@ -461,5 +461,6 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 
-
+#Top Secret secrets
+TopSecret/
 # End of https://www.gitignore.io/api/csharp,aspnetcore
