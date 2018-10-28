@@ -8,7 +8,7 @@ namespace CloudsOfClouds.Domain.Services
 {
     public interface ICloudService
     {
-        Task<CoCStatus> Upload(CoCFileId fileId);
+        Task<CoCStatus> Upload(BlobId blobId);
 		Task<FileStream> Download(BlobId blobId);
     }
 }
