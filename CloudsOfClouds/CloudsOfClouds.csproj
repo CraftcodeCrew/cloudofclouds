@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Colorful.Console" Version="1.2.9" />
     <PackageReference Include="Dropbox.Api" Version="4.9.0" />
     <PackageReference Include="Autofac" Version="4.8.1" />
     <PackageReference Include="Google.Apis.Drive.v2" Version="1.36.1.1390" />

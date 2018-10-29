@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -22,6 +23,8 @@ namespace CloudsOfClouds.Gateways_
 
         public async Task<IEnumerable<BlobId>> SplitData(int parts, Stream stream)
         {
+            Console.WriteLine($"Splitting data into {parts} parts", Color.GreenYellow);
+
             var partSize = (stream.Length + (parts - 1)) / parts;
             var blobStreams = SplitStream(stream, partSize);
 
@@ -39,8 +42,8 @@ namespace CloudsOfClouds.Gateways_
                 var index = 0;
                 while (input.Position < input.Length)
                 {
-                    using (var output = new MemoryStream())
-                    {
+                    var output = new MemoryStream();
+                    
                         int remaining = (int) chunkSize, bytesRead; // TODO This cast might kill us
                         while (remaining > 0 && (bytesRead = input.Read(buffer, 0,
                                    Math.Min(remaining, BUFFER_SIZE))) > 0)
@@ -48,12 +51,11 @@ namespace CloudsOfClouds.Gateways_
                             output.Write(buffer, 0, bytesRead);
                             remaining -= bytesRead;
                         }
-
-                        blobStreams.Add(output);
+                        blobStreams.Add(new MemoryStream(output.ToArray()));
+                    
                     }
-
                     index++;
-                }
+                
             }
 
             return blobStreams;

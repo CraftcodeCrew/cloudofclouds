@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace CloudsOfClouds.CrackHoes
             using (var dbx = new DropboxClient(DropboxCredentials.API_KEY))
             {
                 var full = await dbx.Users.GetCurrentAccountAsync();
+                Console.WriteLine("Connected to Dropbox", Color.GreenYellow);
 
                 await new DropBoxCrackHoe().Upload(dbx, stream, blobId);
             }
@@ -25,10 +27,19 @@ namespace CloudsOfClouds.CrackHoes
         
         async Task Upload(DropboxClient dbx, Stream content, BlobId id)
         {
-            await dbx.Files.UploadAsync(
-                "/" + id.GetBlobId.ToString(),
-                WriteMode.Overwrite.Instance,
-                body: content);
+            try
+            {
+                var task = dbx.Files.UploadAsync(
+                    "/" + id.GetBlobId.ToString(),
+                    WriteMode.Overwrite.Instance,
+                    body: content);
+                Console.WriteLine("Upload to Dropbox completed", Color.GreenYellow);
+                await task;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }

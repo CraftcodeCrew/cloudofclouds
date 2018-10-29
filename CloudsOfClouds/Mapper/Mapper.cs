@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using CloudsOfClouds.Domain.Mapper;
 using CloudsOfClouds.Domain.Model;
 using CloudsOfClouds.Gateways_;
+using Colorful;
 
 namespace CloudsOfClouds.Mapper
 {
@@ -18,6 +20,8 @@ namespace CloudsOfClouds.Mapper
 
         public CoCFileId AddMap(IEnumerable<BlobId> parts)
         {
+            Console.WriteLine($"Updating mapping", Color.GreenYellow);
+
             var fileId = new CoCFileId();
             var mapDao = new CoCMapDAO();
             mapDao.FileId = fileId;

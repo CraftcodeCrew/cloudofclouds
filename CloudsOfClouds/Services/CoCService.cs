@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CloudsOfClouds.Domain.Model;
 using CloudsOfClouds.Domain.Services;
+using Colorful;
 
 namespace CloudsOfClouds.Services
 {
@@ -29,6 +31,8 @@ namespace CloudsOfClouds.Services
         public async Task<CoCStatus> Upload(IEnumerable<BlobId> blobIds)
         {
             var tasks = new List<Task<CoCStatus>>();
+            Console.WriteLine($"Routing datapackages to cloud providers", Color.LawnGreen);
+
             foreach (var id in blobIds)
             {
                 var max = this._cloudServices.Count();

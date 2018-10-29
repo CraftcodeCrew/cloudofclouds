@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudOfClouds.Test", "Cloud
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{FFE90877-9A30-40A1-BFC4-6FDF5BD1D643}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudOfCloudsCLI", "CloudOfCloudsCLI\CloudOfCloudsCLI.csproj", "{EC912D25-2513-4B6F-9A0B-025BB0F4D340}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FFE90877-9A30-40A1-BFC4-6FDF5BD1D643}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFE90877-9A30-40A1-BFC4-6FDF5BD1D643}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFE90877-9A30-40A1-BFC4-6FDF5BD1D643}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC912D25-2513-4B6F-9A0B-025BB0F4D340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC912D25-2513-4B6F-9A0B-025BB0F4D340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC912D25-2513-4B6F-9A0B-025BB0F4D340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC912D25-2513-4B6F-9A0B-025BB0F4D340}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

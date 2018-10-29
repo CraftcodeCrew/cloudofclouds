@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,23 +24,31 @@ namespace CloudsOfClouds.CrackHoes
             UploadFileName = id.GetBlobId.ToString();
                         
 //            GoogleWebAuthorizationBroker.Folder = "Library";
-            UserCredential credential;
-            using (var stream = new System.IO.FileStream("../CloudsOfClouds/TopSecret/google_credentials.json",
-                System.IO.FileMode.Open, System.IO.FileAccess.Read))
+            try
             {
-                credential = await GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.Load(stream).Secrets, Scopes, "user", CancellationToken.None);
+                UserCredential credential;
+                using (var stream = new System.IO.FileStream("../CloudsOfClouds/TopSecret/google_credentials.json",
+                    System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                {
+                    credential = await GoogleWebAuthorizationBroker.AuthorizeAsync(
+                        GoogleClientSecrets.Load(stream).Secrets, Scopes, "user", CancellationToken.None);
+                }
+
+
+                // Create the service.
+                var service = new DriveService(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = "Drive API Sample",
+                });
+                Console.WriteLine("Connected to Google Drive", Color.GreenYellow);
+
+                var progress = await UploadFileAsync(service, domibitch);
             }
-
-            // Create the service.
-            var service = new DriveService(new BaseClientService.Initializer()
+            catch (Exception e)
             {
-                HttpClientInitializer = credential,
-                ApplicationName = "Drive API Sample",
-            });
-
-            var progress = await UploadFileAsync(service, domibitch);
-Debug.Write(progress);
+                Console.WriteLine(e);
+            }
             
         }
 
@@ -52,6 +61,7 @@ Debug.Write(progress);
             insert.ChunkSize = FilesResource.InsertMediaUpload.MinimumChunkSize * 2;
 
             var task = insert.UploadAsync();
+            Console.WriteLine("Upload to Google Drive has completed", Color.GreenYellow);
 
             task.ContinueWith(t =>
             {
